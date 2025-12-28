@@ -1,14 +1,33 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8" />
   <title>Agent Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<header><h2>Agent Dashboard</h2></header>
-<div class="container" id="list"></div>
+<!-- Dark mode toggle -->
+<button class="toggle" onclick="toggleDark()">🌙</button>
 
-<script src="agent.js"></script>
+<header>
+  <h2>Agent Dashboard</h2>
+</header>
+
+<div class="container">
+  <h3>Assigned Incidents</h3>
+  <div id="list"></div>
+</div>
+
+<script>
+function toggleDark() {
+  document.body.classList.toggle("dark");
+}
+</script>
+
+<!-- IMPORTANT: correct relative path -->
+<script src="./agent.js"></script>
+
 </body>
 </html>
