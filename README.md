@@ -5,6 +5,7 @@ without login, while authorities manage, verify, assign, and resolve incidents u
 dashboards.
 
 🔴 Built for Development Hackathon
+
 🌍 Live, scalable, and production-deployed
 
 --------------------------------------
@@ -12,8 +13,10 @@ dashboards.
 
   Frontend (Public Website):
   https://incident-platform.netlify.app 
+  
   Backend API:
   https://incident-backend-57n2.onrender.com 
+  
   GitHub Repository:
   https://github.com/1si24cs003/incident-platform
 
@@ -196,5 +199,7 @@ This project demonstrates:
   Live deployment  
   Professional workflow
 --------------------------------------------------------------
+Public view link for ppt: https://www.canva.com/design/DAG8yAG13oI/JYt-t3DRW4QUiVHcw25-QA/view?utm_content=DAG8yAG13oI&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h0c9c18a5b6
 🚀 Ready for judging.
+
 
