@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Incident Reporting</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h2>Report Incident</h2>
+
+<select id="type">
+  <option>Accident</option>
+  <option>Medical</option>
+  <option>Fire</option>
+</select>
+
+<input id="desc" placeholder="Description">
+<input id="lat" placeholder="Latitude">
+<input id="lng" placeholder="Longitude">
+
+<button onclick="report()">Submit</button>
+
+<h2>Live Incidents</h2>
+<ul id="list"></ul>
+
+<script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
