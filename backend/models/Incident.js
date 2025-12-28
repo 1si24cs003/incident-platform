@@ -6,10 +6,11 @@ const IncidentSchema = new mongoose.Schema({
   latitude: Number,
   longitude: Number,
 
-  severity: String,        // Low | Medium | High
+  severity: String,
   verified: { type: Boolean, default: false },
   status: { type: String, default: "Pending" },
 
+  assignedAgent: { type: String, default: "" },
   assignedResponder: { type: String, default: "" },
 
   createdAt: { type: Date, default: Date.now }
