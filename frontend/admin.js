@@ -7,35 +7,51 @@ async function load() {
   list.innerHTML = "";
 
   data.forEach(i => {
+    const verifiedText = i.verified
+      ? `<span style="color:green;font-weight:bold;">✔ Verified</span>`
+      : `<span style="color:red;font-weight:bold;">✖ Not Verified</span>`;
+
     list.innerHTML += `
       <div class="card">
-        <b>${i.type}</b> (${i.severity})<br>
-        ${i.description}<br><br>
+        <h3>${i.type}</h3>
+        <p>${i.description}</p>
 
-        Status: ${i.status}<br>
-        Agent: ${i.assignedAgent || "None"}<br>
-        Responder: ${i.assignedResponder || "None"}<br><br>
+        <p><b>Status:</b> ${i.status}</p>
+        <p><b>Verification:</b> ${verifiedText}</p>
+        <p><b>Agent:</b> ${i.assignedAgent || "Not assigned"}</p>
+        <p><b>Responder:</b> ${i.assignedResponder || "Not assigned"}</p>
 
-        <input id="agent${i._id}" placeholder="Agent name">
+        ${
+          !i.verified
+            ? `<button onclick="verify('${i._id}')">Verify Incident</button>`
+            : `<button disabled style="background:#9ca3af;">Already Verified</button>`
+        }
+
+        <input id="agent${i._id}" placeholder="Assign agent name">
         <button onclick="assignAgent('${i._id}')">Assign Agent</button>
-        <button onclick="verify('${i._id}')">Verify</button>
       </div>
     `;
   });
 }
 
+async function verify(id) {
+  await fetch(`${API}/${id}/verify`, { method: "PATCH" });
+  load();
+}
+
 async function assignAgent(id) {
-  const agent = document.getElementById("agent" + id).value;
+  const agent = document.getElementById("agent" + id).value.trim();
+  if (!agent) {
+    alert("Enter agent name");
+    return;
+  }
+
   await fetch(`${API}/${id}/assign-agent`, {
     method: "PATCH",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ agent })
   });
-  load();
-}
 
-async function verify(id) {
-  await fetch(`${API}/${id}/verify`, { method: "PATCH" });
   load();
 }
 
