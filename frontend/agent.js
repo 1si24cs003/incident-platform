@@ -1,64 +1,43 @@
 const API = "https://incident-backend-57n2.onrender.com/api/incidents";
 
-/*
- IMPORTANT:
- This MUST match the username used to login as agent
- Login credentials:
-   role: agent
-   username: agent
-   password: agent123
-*/
-const AGENT_USERNAME = "agent";
+// agent chooses name manually
+const AGENT_NAME = prompt("Enter your agent name:");
 
 async function load() {
-  try {
-    const res = await fetch(API);
-    const data = await res.json();
+  const res = await fetch(API);
+  const data = await res.json();
+  const list = document.getElementById("list");
+  list.innerHTML = "";
 
-    const list = document.getElementById("list");
-    list.innerHTML = "";
+  const myIncidents = data.filter(i => i.assignedAgent === AGENT_NAME);
 
-    const assigned = data.filter(
-      i => i.assignedAgent === AGENT_USERNAME
-    );
-
-    if (assigned.length === 0) {
-      list.innerHTML = "<p>No incidents assigned to you.</p>";
-      return;
-    }
-
-    assigned.forEach(i => {
-      list.innerHTML += `
-        <div class="card responder">
-          <b>${i.type}</b> (${i.severity})<br>
-          ${i.description}<br><br>
-
-          <b>Status:</b> ${i.status}<br>
-          <b>Responder:</b> ${i.assignedResponder || "Not assigned"}<br><br>
-
-          <input id="r${i._id}" placeholder="Responder username">
-
-          <button onclick="assignResponder('${i._id}')">
-            Assign Responder
-          </button>
-
-          <button onclick="deleteIncident('${i._id}')">
-            Delete (after completion)
-          </button>
-        </div>
-      `;
-    });
-
-  } catch (err) {
-    console.error("Agent load failed:", err);
+  if (myIncidents.length === 0) {
+    list.innerHTML = "<p>No incidents assigned to this agent.</p>";
+    return;
   }
+
+  myIncidents.forEach(i => {
+    list.innerHTML += `
+      <div class="card">
+        <b>${i.type}</b> (${i.severity})<br>
+        ${i.description}<br><br>
+
+        <b>Status:</b> ${i.status}<br>
+        <b>Responder:</b> ${i.assignedResponder || "Not assigned"}<br><br>
+
+        <input id="resp${i._id}" placeholder="Enter responder name">
+        <button onclick="assignResponder('${i._id}')">Assign Responder</button>
+
+        <button onclick="remove('${i._id}')">Delete after completion</button>
+      </div>
+    `;
+  });
 }
 
 async function assignResponder(id) {
-  const responder = document.getElementById("r" + id).value;
-
+  const responder = document.getElementById("resp" + id).value.trim();
   if (!responder) {
-    alert("Enter responder username");
+    alert("Enter responder name");
     return;
   }
 
@@ -71,9 +50,8 @@ async function assignResponder(id) {
   load();
 }
 
-async function deleteIncident(id) {
-  if (!confirm("Delete this completed incident permanently?")) return;
-
+async function remove(id) {
+  if (!confirm("Delete completed incident?")) return;
   await fetch(`${API}/${id}`, { method: "DELETE" });
   load();
 }

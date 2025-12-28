@@ -1,17 +1,27 @@
 const API = "https://incident-backend-57n2.onrender.com/api/incidents";
-const RESPONDER = "responder";
+
+// responder enters name manually
+const RESPONDER_NAME = prompt("Enter your responder name:");
 
 async function load() {
   const res = await fetch(API);
   const data = await res.json();
+  const list = document.getElementById("list");
   list.innerHTML = "";
 
-  data.filter(i => i.assignedResponder === RESPONDER).forEach(i => {
+  const myJobs = data.filter(i => i.assignedResponder === RESPONDER_NAME);
+
+  if (myJobs.length === 0) {
+    list.innerHTML = "<p>No incidents assigned to this responder.</p>";
+    return;
+  }
+
+  myJobs.forEach(i => {
     list.innerHTML += `
       <div class="card responder">
-        <b>${i.type}</b><br>
+        <b>${i.type}</b> (${i.severity})<br>
         ${i.description}<br>
-        Status: ${i.status}<br><br>
+        <b>Status:</b> ${i.status}<br><br>
 
         <button onclick="update('${i._id}','In Progress')">In Progress</button>
         <button onclick="update('${i._id}','Completed')">Completed</button>
@@ -26,6 +36,7 @@ async function update(id, status) {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ status })
   });
+
   load();
 }
 
