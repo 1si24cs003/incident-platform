@@ -75,17 +75,23 @@ body.dark .card {
 
 .toggle {
   position: fixed;
-  top: 12px;
-  right: 12px;
-  padding: 8px 12px;
+  top: 16px;
+  right: 16px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   border: none;
   background: #111827;
   color: white;
+  font-size: 18px;
   cursor: pointer;
-  z-index: 1000;
+  z-index: 9999;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: background 0.3s, transform 0.2s;
 }
 
 .toggle:hover {
   background: #374151;
+  transform: scale(1.08);
 }
+
