@@ -2,16 +2,32 @@
 <html>
 <head>
   <title>Admin Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<header>
-  <h2>Admin Dashboard</h2>
+<header class="toolbar">
+  <div class="logo" onclick="goHome()">🚨 Incident Platform</div>
+  <nav class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="admin.html">Admin</a>
+    <a href="agent.html">Agent</a>
+    <a href="responder.html">Responder</a>
+    <button class="logout" onclick="logout()">Logout</button>
+  </nav>
+  <button class="menu-btn" onclick="toggleMenu()">☰</button>
 </header>
 
-<div class="container" id="list"></div>
+<button class="toggle" onclick="toggleDark()">🌙</button>
+
+<div class="container">
+  <h2>Admin Dashboard</h2>
+  <div id="list"></div>
+</div>
 
 <script src="admin.js"></script>
+<script src="ui.js"></script>
 </body>
 </html>
