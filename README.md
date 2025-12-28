@@ -172,6 +172,7 @@ Deployment
 
 -----------------------------------------------------------
 📦 Local Setup (Optional)
+
   git clone https://github.com/1si24cs003/incident-platform
   cd incident-platform
 
@@ -185,6 +186,7 @@ Open index.html using Live Server or deploy to Netlify.
 
 -------------------------------------------------
 🏁 Hackathon Submission Checklist
+
   ✔ Source code uploaded to GitHub  
   ✔ Live deployment completed  
   ✔ PPT prepared  
@@ -195,12 +197,15 @@ Open index.html using Live Server or deploy to Netlify.
 👨‍💻 Author
 
 Abdullah Saad Sharief
+
 Development Hackathon Participant
+
 From SIT,Tumkur
 ---------------------------------------------------------------
 ⭐ Final Note
 
 This project demonstrates:
+
   Real-world relevance  
   Clean architecture  
   Full-stack skills  
@@ -208,7 +213,9 @@ This project demonstrates:
   Professional workflow
 --------------------------------------------------------------
 Public view link for ppt: https://www.canva.com/design/DAG8yAG13oI/JYt-t3DRW4QUiVHcw25-QA/view?utm_content=DAG8yAG13oI&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h0c9c18a5b6
+
 🚀 Ready for judging.
+
 
 
 
