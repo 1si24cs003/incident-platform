@@ -33,6 +33,7 @@ This leads to slow response, miscommunication, and lack of transparency.
 ---------------------------------------------------------
 ✅ Solution Overview
 Our platform provides:
+
   📢 Public incident reporting (no login required)  
   🧑‍💼 Admin verification & control  
   🧑‍✈️ Agent coordination  
@@ -66,12 +67,14 @@ Deployment
 👥 User Roles & Permissions
 
 1️⃣ Public User (No Login)
+
   Report incidents  
   View live incidents  
   See verified status  
   View incident map
 
 2️⃣ Admin
+
   Login required  
   Verify incidents  
   Assign agents  
@@ -79,6 +82,7 @@ Deployment
   Monitor system
 
 3️⃣ Agent
+
   Login required  
   View assigned incidents  
   Assign responders  
@@ -86,12 +90,14 @@ Deployment
   Delete incidents after resolution
 
 4️⃣ Responder
+
   Login required  
   View assigned incidents  
   Take action on incidents
 
 -------------------------------------
 🔐 Login System
+
   Role-based authentication  
   Unauthorized users cannot access protected pages  
   Incorrect credentials show error messages  
@@ -119,6 +125,7 @@ Deployment
 
 -------------------------------------------------
 🧪 Demo Steps (IMPORTANT FOR JUDGES)
+
 🔹 Step 1: Public Reporting  
     Open main site  
     Submit an incident
@@ -144,6 +151,7 @@ Deployment
 
 --------------------------------------------------
 📊 Key Features
+
   ✔ Real-time updates (Socket.IO)  
   ✔ Live map visualization  
   ✔ Verified / Unverified badge  
@@ -201,5 +209,6 @@ This project demonstrates:
 --------------------------------------------------------------
 Public view link for ppt: https://www.canva.com/design/DAG8yAG13oI/JYt-t3DRW4QUiVHcw25-QA/view?utm_content=DAG8yAG13oI&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h0c9c18a5b6
 🚀 Ready for judging.
+
 
 
