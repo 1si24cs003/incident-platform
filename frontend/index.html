@@ -1,29 +1,57 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Incident Reporting</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <title>Incident Reporting Platform</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    input, select, button {
+      margin: 5px 0;
+      padding: 8px;
+      width: 100%;
+      max-width: 400px;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    li {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+  </style>
 </head>
 <body>
 
-<h2>Report Incident</h2>
+  <h2>Report an Incident</h2>
 
-<select id="type">
-  <option>Accident</option>
-  <option>Medical</option>
-  <option>Fire</option>
-</select>
+  <select id="type">
+    <option value="Accident">Accident</option>
+    <option value="Medical">Medical</option>
+    <option value="Fire">Fire</option>
+  </select>
 
-<input id="desc" placeholder="Description">
-<input id="lat" placeholder="Latitude">
-<input id="lng" placeholder="Longitude">
+  <input id="desc" placeholder="Description" />
+  <input id="lat" placeholder="Latitude" />
+  <input id="lng" placeholder="Longitude" />
 
-<button onclick="report()">Submit</button>
+  <button onclick="report()">Submit Incident</button>
 
-<h2>Live Incidents</h2>
-<ul id="list"></ul>
+  <hr />
 
-<script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
-<script src="app.js"></script>
+  <h2>Live Incidents</h2>
+  <ul id="list"></ul>
+
+  <!-- Socket.IO client -->
+  <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+
+  <!-- IMPORTANT: correct relative path -->
+  <script src="./app.js"></script>
+
 </body>
 </html>
