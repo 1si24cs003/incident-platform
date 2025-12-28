@@ -1,14 +1,20 @@
-function goHome() {
-  window.location.href = "index.html";
+const role = localStorage.getItem("role");
+const name = localStorage.getItem("name");
+
+function requireLogin(requiredRole) {
+  if (!role || !name) {
+    alert("Please login first");
+    window.location.href = "login.html";
+  }
+  if (requiredRole && role !== requiredRole) {
+    alert("Access denied");
+    window.location.href = "index.html";
+  }
 }
 
 function logout() {
-  alert("Logged out");
-  window.location.href = "index.html";
-}
-
-function toggleMenu() {
-  document.querySelector(".nav-links").classList.toggle("show");
+  localStorage.clear();
+  window.location.href = "login.html";
 }
 
 function toggleDark() {

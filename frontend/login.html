@@ -6,21 +6,32 @@
 </head>
 <body>
 
-<header><h2>Login</h2></header>
+<div class="container">
+  <div class="card">
+    <h2>Login</h2>
 
-<div class="container card">
-  <select id="role">
-    <option value="admin">Admin</option>
-    <option value="agent">Agent</option>
-    <option value="responder">Responder</option>
-  </select>
+    <select id="role">
+      <option value="admin">Admin</option>
+      <option value="agent">Agent</option>
+      <option value="responder">Responder</option>
+    </select>
 
-  <input id="user" placeholder="Username">
-  <input id="pass" type="password" placeholder="Password">
-
-  <button onclick="login()">Login</button>
+    <input id="name" placeholder="Enter your name">
+    <button onclick="login()">Login</button>
+  </div>
 </div>
 
-<script src="auth.js"></script>
+<script>
+function login() {
+  const r = document.getElementById("role").value;
+  const n = document.getElementById("name").value.trim();
+  if (!n) return alert("Enter name");
+
+  localStorage.setItem("role", r);
+  localStorage.setItem("name", n);
+  window.location.href = r + ".html";
+}
+</script>
+
 </body>
 </html>

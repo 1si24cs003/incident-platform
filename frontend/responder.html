@@ -1,33 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Responder Dashboard</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Responder</title>
   <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
+<script src="ui.js"></script>
+<script>requireLogin("responder")</script>
+
 <header class="toolbar">
-  <div class="logo" onclick="goHome()">🚨 Incident Platform</div>
-  <nav class="nav-links">
-    <a href="index.html">Home</a>
-    <a href="admin.html">Admin</a>
-    <a href="agent.html">Agent</a>
-    <a href="responder.html">Responder</a>
+  <div class="logo">Responder Dashboard</div>
+  <div class="nav">
     <button class="logout" onclick="logout()">Logout</button>
-  </nav>
-  <button class="menu-btn" onclick="toggleMenu()">☰</button>
+  </div>
 </header>
 
 <button class="toggle" onclick="toggleDark()">🌙</button>
 
 <div class="container">
-  <h2>Responder Dashboard</h2>
   <div id="list"></div>
 </div>
 
 <script src="responder.js"></script>
-<script src="ui.js"></script>
 </body>
 </html>
