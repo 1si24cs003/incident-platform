@@ -107,47 +107,58 @@ Deployment
 🔄 Complete Workflow (End-to-End)
 
 1.Public User
-  Reports an incident (type, description, location)
+
+-Reports an incident (type, description, location)
+  
 2.Admin
-  Verifies the incident
-  Assigns an agent
+
+  -Verifies the incident
+  -Assigns an agent
+  
 3.Agent
-  Assigns a responder
-  Monitors progress
+
+  -Assigns a responder
+  -Monitors progress
+  
 4.Responder
-  Handles the incident
+
+  -Handles the incident
+  
 5.Agent
-  Marks incident as completed
-  Deletes incident from system
+
+  -Marks incident as completed
+  -Deletes incident from system
+  
 6.System
-  Updates all users in real time
-  Map updates automatically
+
+  -Updates all users in real time
+  -Map updates automatically
 
 -------------------------------------------------
 🧪 Demo Steps (IMPORTANT FOR JUDGES)
 
 🔹 Step 1: Public Reporting  
-    Open main site  
-    Submit an incident
-    Show it appears instantly in the list and map
+    -Open main site  
+    -Submit an incident
+    -Show it appears instantly in the list and map
 
 🔹 Step 2: Admin Verification
-    Login as Admin  
-    Verify the incident  
-    Assign an agent
+    -Login as Admin  
+    -Verify the incident  
+    -Assign an agent
 
 🔹 Step 3: Agent Assignment
-    Login as Agent  
-    Assign a responder  
-    Show incident status update
+    -Login as Agent  
+    -Assign a responder  
+    -Show incident status update
 
 🔹 Step 4: Responder View
-    Login as Responder  
-    Show assigned incident
+    -Login as Responder  
+    -Show assigned incident
 
 🔹 Step 5: Completion
-    Agent deletes the resolved incident  
-    Show real-time removal from public site
+    -Agent deletes the resolved incident  
+    -Show real-time removal from public site
 
 --------------------------------------------------
 📊 Key Features
@@ -215,6 +226,7 @@ This project demonstrates:
 Public view link for ppt: https://www.canva.com/design/DAG8yAG13oI/JYt-t3DRW4QUiVHcw25-QA/view?utm_content=DAG8yAG13oI&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h0c9c18a5b6
 
 🚀 Ready for judging.
+
 
 
 
