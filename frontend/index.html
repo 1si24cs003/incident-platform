@@ -2,27 +2,68 @@
 <html>
 <head>
   <title>Incident Platform</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <link rel="stylesheet" href="style.css">
+
+  <!-- Leaflet -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <!-- Socket.io -->
+  <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
 </head>
+
 <body>
 
 <header class="toolbar">
   <div class="logo">🚨 Incident Platform</div>
   <div class="nav">
-    <a href="login.html">Login</a>
+    <a href="login.html">Admin / Agent / Responder Login</a>
   </div>
 </header>
 
 <button class="toggle" onclick="toggleDark()">🌙</button>
 
 <div class="container">
+
+  <!-- REPORT -->
   <div class="card">
-    <h3>Report Incident</h3>
-    <input placeholder="Description">
-    <button>Submit</button>
+    <h3>📢 Report an Incident</h3>
+
+    <select id="type">
+      <option>Accident</option>
+      <option>Medical</option>
+      <option>Fire</option>
+      <option>Crime</option>
+    </select>
+
+    <input id="desc" placeholder="Description">
+    <input id="lat" placeholder="Latitude">
+    <input id="lng" placeholder="Longitude">
+
+    <button onclick="report()">Submit Incident</button>
   </div>
+
+  <!-- MAP -->
+  <div class="card">
+    <h3>🗺️ Live Incident Map</h3>
+    <div id="map" style="height:400px;"></div>
+  </div>
+
+  <!-- INCIDENT LIST -->
+  <div class="card">
+    <h3>📋 Live Incidents</h3>
+    <ul id="list"></ul>
+  </div>
+
 </div>
 
 <script src="ui.js"></script>
+<script src="app.js"></script>
+
 </body>
 </html>

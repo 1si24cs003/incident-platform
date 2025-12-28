@@ -1,10 +1,9 @@
-const BACKEND = "https://incident-backend-57n2.onrender.com";
-const API = `${BACKEND}/api/incidents`;
-const socket = io(BACKEND);
+const API = "https://incident-backend-57n2.onrender.com/api/incidents";
+const socket = io("https://incident-backend-57n2.onrender.com");
 
-// INIT MAP
-const map = L.map("map").setView([12.9716, 77.5946], 6);
+let map = L.map("map").setView([20, 78], 4);
 L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(map);
+
 let markers = [];
 
 async function load() {
@@ -16,20 +15,20 @@ async function load() {
   markers = [];
 
   data.forEach(i => {
-    // UI
-    document.getElementById("list").innerHTML += `
-      <div class="card">
-        <b>${i.type}</b> (${i.severity})<br>
-        ${i.description}<br>
-        Status: ${i.status}
-      </div>
+    // List
+    const li = document.createElement("li");
+    li.innerHTML = `
+      <b>${i.type}</b> - ${i.description}<br>
+      Severity: ${i.severity || "Medium"}<br>
+      Status: ${i.status}
     `;
+    document.getElementById("list").appendChild(li);
 
-    // MAP
+    // Map
     if (i.latitude && i.longitude) {
       const marker = L.marker([i.latitude, i.longitude])
         .addTo(map)
-        .bindPopup(`<b>${i.type}</b><br>${i.severity}`);
+        .bindPopup(`<b>${i.type}</b><br>${i.description}`);
       markers.push(marker);
     }
   });
@@ -43,11 +42,17 @@ async function report() {
       type: type.value,
       description: desc.value,
       latitude: lat.value,
-      longitude: lng.value
+      longitude: lng.value,
+      severity: "Medium"
     })
   });
+
+  desc.value = "";
+  lat.value = "";
+  lng.value = "";
 }
 
 socket.on("newIncident", load);
 socket.on("updateIncident", load);
+
 load();
