@@ -61,3 +61,31 @@ nav a {
   margin: 0 10px;
   text-decoration: none;
 }
+
+/* Dark mode */
+body.dark {
+  background: #0f172a;
+  color: white;
+}
+
+body.dark .card {
+  background: #1e293b;
+  color: white;
+}
+
+.toggle {
+  position: fixed;
+  top: 12px;
+  right: 12px;
+  padding: 8px 12px;
+  border-radius: 50%;
+  border: none;
+  background: #111827;
+  color: white;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.toggle:hover {
+  background: #374151;
+}

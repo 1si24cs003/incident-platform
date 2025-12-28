@@ -2,20 +2,36 @@ const BACKEND = "https://incident-backend-57n2.onrender.com";
 const API = `${BACKEND}/api/incidents`;
 const socket = io(BACKEND);
 
+// INIT MAP
+const map = L.map("map").setView([12.9716, 77.5946], 6);
+L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(map);
+let markers = [];
+
 async function load() {
   const res = await fetch(API);
   const data = await res.json();
-  const list = document.getElementById("list");
-  list.innerHTML = "";
+
+  document.getElementById("list").innerHTML = "";
+  markers.forEach(m => map.removeLayer(m));
+  markers = [];
 
   data.forEach(i => {
-    list.innerHTML += `
+    // UI
+    document.getElementById("list").innerHTML += `
       <div class="card">
-        <b>${i.type}</b> - ${i.description}<br>
-        <span class="badge">${i.status}</span>
-        ${i.verified ? "<span class='verified'>✔ Verified</span>" : ""}
+        <b>${i.type}</b> (${i.severity})<br>
+        ${i.description}<br>
+        Status: ${i.status}
       </div>
     `;
+
+    // MAP
+    if (i.latitude && i.longitude) {
+      const marker = L.marker([i.latitude, i.longitude])
+        .addTo(map)
+        .bindPopup(`<b>${i.type}</b><br>${i.severity}`);
+      markers.push(marker);
+    }
   });
 }
 
@@ -27,8 +43,7 @@ async function report() {
       type: type.value,
       description: desc.value,
       latitude: lat.value,
-      longitude: lng.value,
-      severity: "Medium"
+      longitude: lng.value
     })
   });
 }

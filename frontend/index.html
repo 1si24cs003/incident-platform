@@ -1,10 +1,24 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Incident Reporting</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <title>Incident Reporting Platform</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Leaflet CSS -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  />
 </head>
+
 <body>
+
+<!-- 🌙 DARK MODE BUTTON -->
+<button class="toggle" onclick="toggleDarkMode()">🌙</button>
 
 <header>
   <h2>🚨 Incident Reporting Platform</h2>
@@ -15,25 +29,50 @@
 
 <div class="container">
 
+  <!-- REPORT INCIDENT CARD -->
   <div class="card">
     <h3>Report an Incident</h3>
+
     <select id="type">
       <option>Accident</option>
       <option>Medical</option>
       <option>Fire</option>
     </select>
-    <input id="desc" placeholder="Description">
-    <input id="lat" placeholder="Latitude">
-    <input id="lng" placeholder="Longitude">
-    <button onclick="report()">Submit</button>
+
+    <input id="desc" placeholder="Description" />
+    <input id="lat" placeholder="Latitude" />
+    <input id="lng" placeholder="Longitude" />
+
+    <button onclick="report()">Submit Incident</button>
   </div>
 
+  <!-- MAP CARD -->
+  <div class="card">
+    <h3>Live Incident Map</h3>
+    <div id="map" style="height: 400px; border-radius: 6px;"></div>
+  </div>
+
+  <!-- INCIDENT LIST -->
   <h3>Live Incidents</h3>
   <div id="list"></div>
 
 </div>
 
+<!-- Socket.IO -->
 <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
-<script src="app.js"></script>
+
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<!-- Dark mode logic -->
+<script>
+  function toggleDarkMode() {
+    document.body.classList.toggle("dark");
+  }
+</script>
+
+<!-- App Logic -->
+<script src="./app.js"></script>
+
 </body>
 </html>

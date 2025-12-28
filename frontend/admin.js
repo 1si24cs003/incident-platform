@@ -9,28 +9,30 @@ async function load() {
   data.forEach(i => {
     list.innerHTML += `
       <div class="card admin">
-        <b>${i.type}</b> - ${i.description}<br>
-        Status: ${i.status}<br>
-        Verified: ${i.verified}
-        <br><br>
+        <b>${i.type}</b> (${i.severity})<br>
+        ${i.description}<br>
+        Assigned: ${i.assignedResponder || "None"}<br><br>
+
+        <input placeholder="Responder name" id="r${i._id}">
+        <button onclick="assign('${i._id}')">Assign</button>
         <button onclick="verify('${i._id}')">Verify</button>
-        <button onclick="status('${i._id}','Resolved')">Resolve</button>
       </div>
     `;
   });
 }
 
-async function verify(id) {
-  await fetch(`${API}/${id}/verify`, { method: "PATCH" });
+async function assign(id) {
+  const name = document.getElementById("r" + id).value;
+  await fetch(`${API}/${id}/assign`, {
+    method: "PATCH",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ responder: name })
+  });
   load();
 }
 
-async function status(id, s) {
-  await fetch(`${API}/${id}/status`, {
-    method: "PATCH",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ status: s })
-  });
+async function verify(id) {
+  await fetch(`${API}/${id}/verify`, { method: "PATCH" });
   load();
 }
 
