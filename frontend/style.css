@@ -95,3 +95,45 @@ body.dark .card {
   transform: scale(1.08);
 }
 
+/* ---------------- MOBILE RESPONSIVE ---------------- */
+
+@media (max-width: 768px) {
+
+  header h2 {
+    font-size: 18px;
+  }
+
+  nav a {
+    display: block;
+    margin-top: 8px;
+  }
+
+  .container {
+    padding: 12px;
+  }
+
+  .card {
+    padding: 14px;
+    margin-bottom: 14px;
+  }
+
+  input, select, button {
+    font-size: 16px;
+    padding: 12px;
+  }
+
+  button {
+    border-radius: 8px;
+  }
+
+  #map {
+    height: 280px !important;
+  }
+
+  .toggle {
+    width: 42px;
+    height: 42px;
+    font-size: 16px;
+  }
+}
+
