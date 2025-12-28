@@ -1,11 +1,13 @@
-const role = localStorage.getItem("role");
-const name = localStorage.getItem("name");
-
 function requireLogin(requiredRole) {
-  if (!role || !name) {
+  const role = localStorage.getItem("role");
+  const loggedIn = localStorage.getItem("loggedIn");
+
+  if (!loggedIn || !role) {
     alert("Please login first");
     window.location.href = "login.html";
+    return;
   }
+
   if (requiredRole && role !== requiredRole) {
     alert("Access denied");
     window.location.href = "index.html";

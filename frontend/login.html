@@ -2,34 +2,60 @@
 <html>
 <head>
   <title>Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
 <div class="container">
   <div class="card">
-    <h2>Login</h2>
+    <h2>🔐 Secure Login</h2>
 
+    <label>Role</label>
     <select id="role">
       <option value="admin">Admin</option>
       <option value="agent">Agent</option>
       <option value="responder">Responder</option>
     </select>
 
-    <input id="name" placeholder="Enter your name">
+    <label>Password</label>
+    <input id="password" type="password" placeholder="Enter password">
+
+    <p id="error" style="color:red; display:none;">Incorrect credentials</p>
+
     <button onclick="login()">Login</button>
+
+    <p style="font-size:12px; margin-top:10px; opacity:0.7;">
+      Demo passwords:<br>
+      Admin: <b>admin123</b><br>
+      Agent: <b>agent123</b><br>
+      Responder: <b>responder123</b>
+    </p>
   </div>
 </div>
 
 <script>
 function login() {
-  const r = document.getElementById("role").value;
-  const n = document.getElementById("name").value.trim();
-  if (!n) return alert("Enter name");
+  const role = document.getElementById("role").value;
+  const pass = document.getElementById("password").value;
+  const error = document.getElementById("error");
 
-  localStorage.setItem("role", r);
-  localStorage.setItem("name", n);
-  window.location.href = r + ".html";
+  const passwords = {
+    admin: "admin123",
+    agent: "agent123",
+    responder: "responder123"
+  };
+
+  if (pass !== passwords[role]) {
+    error.style.display = "block";
+    return;
+  }
+
+  localStorage.setItem("role", role);
+  localStorage.setItem("loggedIn", "true");
+
+  window.location.href = role + ".html";
 }
 </script>
 
